@@ -1,0 +1,26 @@
+name: Pruebas de la base de datos
+
+on:
+  pull_request:
+    branches: [main, development]
+  push:
+    branches: [main, development]
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Levantar PostgreSQL de Supabase y aplicar migraciones
+        run: supabase db start
+
+      - name: Revisar las funciones con el linter de Supabase
+        run: supabase db lint --level error
+
+      - name: Correr pruebas pgTAP
+        run: supabase test db
