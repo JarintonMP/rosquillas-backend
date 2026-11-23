@@ -1,0 +1,13 @@
+# Supabase
+supabase/.branches
+supabase/.temp
+supabase/.env
+
+# Variables de entorno (nunca se suben)
+.env
+.env.*
+!.env.example
+
+# Sistema
+.DS_Store
+Thumbs.db

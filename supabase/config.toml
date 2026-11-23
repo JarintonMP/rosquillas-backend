@@ -1,0 +1,28 @@
+# Configuración de Supabase CLI para desarrollo local.
+# Lo que no aparece aquí usa los valores por defecto de la CLI.
+project_id = "rosquillas-backend"
+
+[api]
+enabled = true
+port = 54321
+# Esquemas que la app puede consultar por la API. En el proyecto de
+# Supabase en la nube hay que agregar los mismos en
+# Project Settings > API > Exposed schemas.
+schemas = ["public", "graphql_public", "seguridad", "catalogo", "ventas", "inventario", "auditoria"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[auth]
+enabled = true
+site_url = "http://localhost:8081"
+# Solo la familia usa la app: nadie se registra solo. El super admin
+# crea o invita a cada usuario desde el panel de Supabase.
+enable_signup = false
