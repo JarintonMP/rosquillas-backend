@@ -18,4 +18,7 @@ for migracion in "$RAIZ"/supabase/migrations/*.sql; do
   "${PSQL[@]}" -d "$BASE" -f "$migracion"
 done
 
+# Igual que `supabase db start`: también carga los datos de ejemplo.
+"${PSQL[@]}" -d "$BASE" -f "$RAIZ/supabase/seed.sql"
+
 pg_prove -d "$BASE" "$RAIZ"/supabase/tests/database/*.test.sql

@@ -15,7 +15,7 @@ set local role authenticated;
 select set_config('request.jwt.claims', '{"sub": "00000000-0000-0000-0000-0000000000d2"}', true);
 
 insert into catalogo.productos (id, nombre, clase, unidad, precio_venta)
-values ('00000000-0000-0000-0000-0000000000e1', 'Tanela', 'producto_terminado', 'unidad', 700);
+values ('00000000-0000-0000-0000-0000000000e1', 'Producto de prueba de bitácora', 'producto_terminado', 'unidad', 700);
 update catalogo.productos set precio_venta = 800 where id = '00000000-0000-0000-0000-0000000000e1';
 
 select results_eq(
